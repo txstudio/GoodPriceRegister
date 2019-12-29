@@ -1,0 +1,24 @@
+﻿@page "/goodprice"
+
+@using GoodPriceApp.Services
+
+@inject IGoodPriceService _service
+
+<h1>已登記的價格清單</h1>
+
+Welcome to your new app.
+
+<p>Total Count : @Count</p>
+
+
+@code { 
+
+    private int Count { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var _items = await _service.GetListAsync();
+
+        this.Count = _items.Count();
+    }
+}
